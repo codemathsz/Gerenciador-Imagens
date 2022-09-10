@@ -13,19 +13,18 @@ class PictureList extends Component{
 
         const {props} = this;
         // extraídor de chave, que nos permite identificar cada um dos nossos items como único
-        const keyExtractor = item => item.id ;
-        return(
-            // para deixa-lo na linha inteira, usamos o flex 1.
-            <View style={{flex: 1}}>
-                // vamos montar a lista
-                <FlatList
-                    numColumns={3}
-                    data={props.list}
-                    keyExtractor={keyExtractor}
-                    renderItem={({item}) => <PictureListItem onClick={props.onClick} item={item} />}
-                />
-            </View>
-        )
+        const keyExtractor = item => item.id;
+        
+       return(
+        <View style={{flex:1}}>
+            <FlatList
+                numColumns={3}
+                data={props.list}
+                keyExtractor={keyExtractor}
+                renderItem={({item}) => <PictureListItem onClick={props.onClick} item={item} /> }
+            />
+        </View>
+       );
     }
 }
 
@@ -36,15 +35,17 @@ function PictureListItem(props){
     const {item} = props;
     return(
         // cada item será uma imagem, passamos o o TouchHeigthLight e o elemento onPress, pois a imagem será clicavél
-        <TouchableHighlight onPress={() => {props.OnClick(item)}}> // Dentro do OnPres passamos uma função que irá executar o Onclick e passamos o item.
+        //Dentro do OnPres passamos uma função que irá executar o Onclick e passamos o item. 
+        <TouchableHighlight onPress={() => {props.onClick(item)}}> 
             <Image
                 source={{uri: item.url}}
                 style={{
-                    width: 80, height: 80
+                    width: 80, 
+                    height: 80
                 }}
             />
         </TouchableHighlight>
-    )
+    );
 }
 
 export default PictureList

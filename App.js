@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import {  View, Button} from 'react-native';
-import CameraDialog from './app/components/CameraDialog';
+import {  View, Button, StyleSheet} from 'react-native';
 import PictureList from './app/components/PictureList';
 
-export default  class App extends Component {
+class App extends Component {
 
   state = {
     pictureList: [
@@ -26,9 +25,9 @@ export default  class App extends Component {
   render(){
     const {state} = this
     return (
-      <View >
+      <View style={styles.container}>
         <PictureList list={state.pictureList} onClick={this.onPictureSelect}/>
-        <View >
+        <View  style={{padding:15,backgroundColor: '#999', width: '100%'}}>
           <Button
             // no onPress chamaremos uma função, openModal
             onPress={this.openModal}
@@ -36,9 +35,24 @@ export default  class App extends Component {
             color="#0062ac" // cor do botão
           />
         </View>
-        <CameraDialog isOpen={state.isModalOpen}/>
+        
       </View>
     );
   }
 }
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor: '#F5FCFF'
+  },
+  footer:{
+    padding:15,
+    backgroundColor: '#999',
+    width:'100%',
+    textAlign:'center'
+  }
+})
 
+export default App

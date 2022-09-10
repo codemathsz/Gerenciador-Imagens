@@ -13,15 +13,10 @@ class CameraDialog extends Component{
     render(){
         const {props, state} = this;
         return(
-            <Modal
-                animationType="slide"
-                transparent={false}
-                visible={props.isOpen}
-            >
-
+            <Modal animationType="slide" transparent={false} visible={props.isOpen}>
                 <View>
                     <Image source={{uri: state.currentImage}}/>
-                    <TouchableOpacity>
+                   <TouchableOpacity>
                         <Text>X</Text>
                     </TouchableOpacity>
                 </View>
